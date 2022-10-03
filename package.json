@@ -9,7 +9,7 @@
     "build": "CI=false && tsc"
   },
   "keywords": [],
-  "author": "",
+  "author": "pediageek",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
