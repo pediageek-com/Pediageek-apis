@@ -8,7 +8,7 @@
     "dev": "ts-node-dev server/index.ts",
     "build": "CI=false && tsc"
   },
-  "keywords": [],
+  "keywords": ["Blogging","learning","write blog"],
   "author": "pediageek",
   "license": "ISC",
   "dependencies": {
