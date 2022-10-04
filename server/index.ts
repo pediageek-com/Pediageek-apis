@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: `${process.env.BASE_URL}`,
+    origin: `*`,
     credentials: true,
   })
 );
@@ -25,7 +25,7 @@ app.use(cookieParser());
 const http = createServer(app);
 export const io = new Server(http, {
   cors: {
-    origin: `${process.env.BASE_URL}`,
+    origin: `*`,
     credentials: true,
   },
 });
