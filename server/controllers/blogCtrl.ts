@@ -3,12 +3,10 @@ import Drafts from "../models/draftModel";
 import Blogs from "../models/blogModel";
 import Comments from "../models/commentModel";
 import Preferances from "../models/preferanceModel";
-import Users from "../models/userModel";
 import { IReqAuth } from "../config/interface";
 import mongoose from "mongoose";
 import balanceCtrl from "./balanceCtrl";
 import notificationCtrl from "./noticeCtrl";
-import News from "../models/newsModel";
 
 const Pagination = (req: IReqAuth) => {
   let page = Number(req.query.page) * 1 || 1;
@@ -27,10 +25,8 @@ const blogCtrl = {
   createBlog: async (req: IReqAuth, res: Response) => {
     if (!req.user)
       return res.status(400).json({ msg: "Invalid Authentication." });
-
     try {
       const { title, content, description, thumbnail, category } = req.body;
-
       const newBlog = new Blogs({
         user: req.user._id,
         title: title.toLowerCase(),
@@ -39,7 +35,6 @@ const blogCtrl = {
         thumbnail,
         category,
       });
-
       await newBlog.save();
       if (
         req.user.blogcount === 0 &&
