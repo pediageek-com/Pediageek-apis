@@ -5,7 +5,6 @@ import Comments from "../models/commentModel";
 import Preferances from "../models/preferanceModel";
 import { IReqAuth } from "../config/interface";
 import mongoose from "mongoose";
-import balanceCtrl from "./balanceCtrl";
 import notificationCtrl from "./noticeCtrl";
 
 const Pagination = (req: IReqAuth) => {
@@ -36,21 +35,6 @@ const blogCtrl = {
         category,
       });
       await newBlog.save();
-      if (
-        req.user.blogcount === 0 &&
-        req.user.referer !== "PediaGeek" &&
-        req.user.referer !== ""
-      ) {
-        balanceCtrl.updateReferalbalance(req.user.referer, req.user._id);
-        notificationCtrl.addNotification(
-          req.user._id,
-          "Referal money Added 🥰.",
-          "Hii! " +
-            " " +
-            req.user.name +
-            " Your referal amount is added to your wallet .Keep contributing and earn more ."
-        );
-      }
       req.user.blogcount = req.user.blogcount + 1;
       req.user.save();
       res.json({
