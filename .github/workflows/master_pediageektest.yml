@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'pediageektest'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C94D774B871648EB9F5006C06B0F2833 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8D38DC72882642D5B9A3175ADA15E183 }}
           package: .
