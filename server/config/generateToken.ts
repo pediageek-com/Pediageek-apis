@@ -24,6 +24,5 @@ export const generateRefreshToken = (payload: object, res: Response) => {
     path: `/api/refresh_token`,
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
   });
-
   return refresh_token;
 };
