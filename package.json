@@ -8,7 +8,11 @@
     "dev": "ts-node-dev server/index.ts",
     "build": "CI=false && tsc"
   },
-  "keywords": ["Blogging","learning","write blog"],
+  "keywords": [
+    "Blogging",
+    "learning",
+    "write blog"
+  ],
   "author": "pediageek",
   "license": "ISC",
   "dependencies": {
@@ -17,6 +21,7 @@
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
+    "express-rate-limit": "^6.6.0",
     "form-data": "^4.0.0",
     "google-auth-library": "^7.1.0",
     "jsonwebtoken": "^8.5.1",
