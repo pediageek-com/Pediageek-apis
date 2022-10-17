@@ -175,3 +175,9 @@ export interface Blogimage extends Document {
   shareuser: string[];
   _doc: object;
 }
+
+export interface IStats {
+    user_ID : String;
+    session_ID: String;
+    pages: string[];
+}
