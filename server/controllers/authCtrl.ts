@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Users from "../models/userModel";
 import Compnaies from "../models/comanyModel";
 import bcrypt from "bcrypt";
+import axios from "axios";
 import jwt from "jsonwebtoken";
 import {
   generateActiveToken,
@@ -18,6 +19,7 @@ import {
 } from "../config/interface";
 import { OAuth2Client } from "google-auth-library";
 import notificationCtrl from "./noticeCtrl";
+import request from "request";
 
 const client = new OAuth2Client(`${process.env.MAIL_CLIENT_ID}`);
 const CLIENT_URL = `${process.env.BASE_URL}`;
@@ -147,14 +149,23 @@ const authCtrl = {
 
 export const loginUser = async (
   user: IUser,
-  password: string,
+  password: Buffer,
   res: Response
 ) => {
-  
-
-  return res.json({
-    msg: "Login Success!",
-  });
+  axios
+    .post("http://localhost:6000/match", {
+      img1: password,
+      img2: user.password1,
+    })
+    .then((ret) => {
+      if (ret.data.simmilarity > 81) return res.json({ success: true });
+      else return res.json({ success: false });
+    })
+    .catch((err) => {
+      return res
+        .status(400)
+        .json({ msg: "i am facing some issues try again later." });
+    });
 };
 const registerUser = async (user: IUserParams, res: Response) => {
   const newUser = new Users(user);
